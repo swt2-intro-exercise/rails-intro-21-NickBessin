@@ -14,6 +14,7 @@ describe "New author page", type: :feature do
   end
 
   it "should not validate w/o last name" do
-    expect(@author).to_not be_valid
+    author = Author.new(first_name: "Mario", last_name: "", homepage: "Party")
+    expect(author).to_not be_valid
   end
 end
