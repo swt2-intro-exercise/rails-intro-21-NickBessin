@@ -10,4 +10,9 @@ describe "New paper page", type: :feature do
     paper = Paper.new(title: "Sport Bild", venue: nil, year: "2020")
     expect(paper).to_not be_valid
   end
+
+  it "should not validate w/o year" do
+    paper = Paper.new(title: "Sport Bild", venue: "Dresden", year: nil)
+    expect(paper).to_not be_valid
+  end
 end
