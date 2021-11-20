@@ -8,7 +8,6 @@ describe "Overview page", type: :feature do
 
   it "should have a link to delete an author" do
     @author = Author.create(first_name: 'Alan', last_name: 'Turing')
-    puts @author.name
     visit authors_path
     expect(page).to have_link 'Delete'
   end
