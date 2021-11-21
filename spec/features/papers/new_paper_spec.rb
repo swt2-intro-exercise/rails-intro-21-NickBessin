@@ -15,4 +15,9 @@ describe "New paper page", type: :feature do
     paper = Paper.new(title: "Sport Bild", venue: "Dresden", year: nil)
     expect(paper).to_not be_valid
   end
+
+  it "should not validate w/ non-integer year" do
+    paper = Paper.new(title: "Sport Bild", venue: "Dresden", year: "nineteen-fifty")
+    expect(paper).to_not be_valid
+  end
 end
