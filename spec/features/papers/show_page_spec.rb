@@ -15,7 +15,6 @@ describe "Show page", type: :feature do
     fill_in 'paper[year]', with: paper.year
 	check('Alan Turing')
 	submit_form
-	visit papers_path(paper)
-	expect(page).to have_text 'Alan Turing'
-  end
+	expect(page).to have_text "Alan Turing"
+	end
 end
