@@ -3,12 +3,15 @@ class PapersController < ApplicationController
 
   # GET /papers
   def index
-    @papers = Paper.all
+    if params[:year] != nil
+		@papers = Paper.where(year: params[:year])
+	  else
+		@papers = Paper.all
+	  end
   end
 
   # GET /papers/1
   def show
-	@paper = Paper.find(params[:id])
   end
 
   # GET /papers/new
@@ -18,7 +21,7 @@ class PapersController < ApplicationController
 
   # GET /papers/1/edit
   def edit
-	@paper = Paper.find(params[:id])
+	set_paper
   end
 
   # POST /papers
