@@ -1,0 +1,21 @@
+<h1>Listing Authors</h1>
+ 
+<%= link_to 'New', new_author_path %>
+
+<table>
+  <tr>
+    <th>First & Last name</th>
+    <th>Homepage</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @authors.each do |author| %>
+    <tr>
+      <td style="color:green"><%= author.name %></td>
+      <td><%= author.homepage %></td>
+      <td><%= link_to 'Show', author_path(author) %></td>
+      <td><%= link_to 'Edit', edit_author_path(author) %></td>
+      <td><%= link_to 'Delete', author_path(author), method: :delete, data: { confirm: 'Do you want to delete this record?' } %></td>
+    </tr>
+  <% end %>
+</table>
