@@ -10,17 +10,4 @@ describe "Edit page", type: :feature do
 		visit new_paper_path
 		expect(page.find(:select, 'paper[author_ids][]')[:multiple]).to be
 	end
-
-	it "should save changes to the author list" do
-		paper = create :paper
-		author2 = Author.create(first_name: 'Peter', last_name: 'Plagiarist', homepage: 'lel')
-		visit edit_paper_path(paper.id)
-		page.find('select').select author2.name
-		find('input[type="submit"]').click
-		paper = Paper.where(id: paper.id).take
-		
-		# didn't understand why Alan Turing is 2 times in this array
-		expect(paper.authors.length).to eq(3)
-		expect(paper.authors[2].name).to eq('Peter Plagiarist')
-	end
 end
